@@ -6,17 +6,16 @@ import JS from "../assets/javascript.png"
 import REACT from "../assets/react.png"
 import TAILWIND from "../assets/tailwind.png"
 import NODE from "../assets/node.png"
-import MONGO from "../assets/mongo.png"
 import SPRING from "../assets/springboot.png"
 
 const Skills = () => {
   return (
-  <div name="skills" className='w-full h-screen bg-[#0a1927] text-white'>
+  <div name="skills" className='w-full h-screen bg-[#0a1927] text-[#E2DFD2]'>
     {/* container */}
-      <div className='max-w-[1000px] mx-auto px-4 '>
+      <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full '>
         <div>
           <p className='text-4xl font-bold text-[#d1d1bd] inline border-b-4'>Skills</p>
-          <p className='text-2xl text-[#544a4a] py-4'>//Some of the technologies i've worked on </p>
+          <p className='text-2xl text-[#544a4a] py-4'>Some of the technologies i've worked on </p>
         </div>
 
         <div className='w-full grid grid-cols-2 sm:grid-cols-4 text-center gap-4 py-8'>
