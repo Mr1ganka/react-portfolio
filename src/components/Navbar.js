@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import logo_normal from "../assets/logo_normal.png"
 import {FaBars,FaTimes, FaLinkedin, FaGithub} from 'react-icons/fa'
-import { HiOutlineMail } from 'react-icons/hi';
+// import { HiOutlineMail } from 'react-icons/hi';
 import {BsFillPersonLinesFill} from 'react-icons/bs'
 import { Link } from 'react-scroll'
 
@@ -81,28 +81,28 @@ function Navbar() {
             <ul>
                 <li className='w-[160px] h-[60px] flex justify-between ml-[-100px] hover:ml-[-10px] duration-300 bg-blue-500'>
                     <a className='flex justify-between items-center w-full text-gray-300' 
-                        href="/">
+                        href="https://www.linkedin.com/in/mriganka-das-95936b21b/">
                         LinkedIn <FaLinkedin size={30}/>
                     </a>
                 </li>
                 
                 <li className='w-[160px] h-[60px] flex justify-between ml-[-100px] bg-[#262d34] hover:ml-[-10px] duration-300'>
                     <a  className='flex justify-between items-center w-full text-gray-300'
-                        href='/'>
+                        href='https://github.com/Mr1ganka'>
                         Github <FaGithub size={30}/>
                     </a>
                 </li>
 
-                <li className='w-[160px] h-[60px] flex justify-between ml-[-100px] bg-[#6fc2b0] hover:ml-[-10px] duration-300'>
+                {/* <li className='w-[160px] h-[60px] flex justify-between ml-[-100px] bg-[#6fc2b0] hover:ml-[-10px] duration-300'>
                     <a className='flex justify-between items-center w-full text-gray-300'
-                        href='/'>
+                        href='"mailto:thisismrigs@gmail.com"'>
                         Email <HiOutlineMail size={30}/>
                     </a>
-                </li>
+                </li> */}
 
                 <li className='w-[160px] h-[60px] flex justify-between ml-[-100px] bg-[#565f69] hover:ml-[-10px] duration-300'>
                     <a className='flex justify-between items-center w-full text-gray-300'
-                        href="/">
+                        href="https://drive.google.com/file/d/1nRJ7IBQ-whHv17K0_g7KQrbSvzvIbIJp/view?usp=drive_link">
                         Resume <BsFillPersonLinesFill size={30}/>
                     </a>
                 </li>
