@@ -1,118 +1,194 @@
-import React, {useState} from 'react'
-import logo_normal from "../assets/logo_normal.png"
-import {FaBars,FaTimes, FaLinkedin, FaGithub} from 'react-icons/fa'
-// import { HiOutlineMail } from 'react-icons/hi';
-import {BsFillPersonLinesFill} from 'react-icons/bs'
-import { Link } from 'react-scroll'
+import React, { useState, useEffect } from 'react';
+import { portfolioData } from '../data/portfolioData';
+import {
+  FaBars,
+  FaTimes,
+  FaLinkedin,
+  FaGithub,
+  FaTerminal,
+  FaFilePdf,
+} from 'react-icons/fa';
 
+function Navbar({ onOpenTerminal }) {
+  const [nav, setNav] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-function Navbar() {
-    const handleNavClick = () => {
-        window.scrollTo({ top: 0, left: 0, behavior: 'smooth', duration: 8000 });
-      };
-    const [nav, setNav] = useState(false);
-    const handleClick = () => {
-        setNav(!nav);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 40) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
     };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = (id) => {
+    setNav(false);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const navItems = [
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'playground', label: 'System Lab', highlight: true },
+    { id: 'contact', label: 'Contact' },
+  ];
+
   return (
-    <div className='fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-gray-300' onClick={handleNavClick}>
-      <div>
-        <img src={logo_normal} alt='logo' style={{ width:'50px' }}/>
-      </div>
+    <header
+      className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
+        scrolled
+          ? 'bg-[#080c14]/90 backdrop-blur-md border-b border-slate-800/80 py-3 shadow-lg'
+          : 'bg-transparent py-5'
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+        {/* Brand / Logo */}
+        <button
+          onClick={() => scrollToSection('home')}
+          className="flex items-center gap-3 group text-left"
+        >
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-slate-950 font-black font-mono text-base shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+            MD
+          </div>
+          <div>
+            <div className="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors">
+              Mriganka Das
+            </div>
+            <div className="text-[11px] font-mono text-slate-400">
+              Senior Backend Engineer
+            </div>
+          </div>
+        </button>
 
-      {/* menu */}
-        <ul className='hidden md:flex'>
-            <li>
-                <Link to="home" smooth={true} duration={500}>
-                    Home
-                </Link>
-            </li>
+        {/* Desktop Navigation Links */}
+        <nav className="hidden lg:flex items-center gap-1">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
+                item.highlight
+                  ? 'bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+              }`}
+            >
+              {item.label}
+            </button>
+          ))}
+        </nav>
 
-            <li>
-                <Link to="about" smooth={true} duration={500}>
-                    About
-                </Link>
-            </li>
+        {/* Header Action Buttons */}
+        <div className="hidden sm:flex items-center gap-2.5">
+          <button
+            onClick={onOpenTerminal}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 hover:border-cyan-500 text-cyan-300 text-xs font-mono transition-all"
+            title="Open Interactive CLI Terminal"
+          >
+            <FaTerminal size={12} />
+            <span>CLI [~]</span>
+          </button>
 
-            <li>
-                <Link to="skills" smooth={true} duration={500}>
-                    skills
-                </Link>
-            </li>
+          <a
+            href={portfolioData.personal.resumeUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs font-mono transition-all shadow-sm"
+          >
+            <FaFilePdf size={12} />
+            <span>Resume</span>
+          </a>
 
-            <li>
-                <Link to="contact" smooth={true} duration={500}>
-                    Contact
-                </Link>
-            </li>
+          <a
+            href={portfolioData.personal.github}
+            target="_blank"
+            rel="noreferrer"
+            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            title="GitHub"
+          >
+            <FaGithub size={16} />
+          </a>
 
-        </ul>
-
-      
-
-      {/* Hamburger menu Icon */}
-      <div onClick={handleClick} className='sm:hidden z-10'>
-        {!nav?<FaTimes/>:<FaBars/>}
-      </div>
-
-      {/* Mobile menu */} 
-        <ul className={nav?'hidden':'absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex flex-col justify-center items-center lg:hidden'}>
-                    <li className='py-6 text-4xl'>
-                        <Link onClick={handleClick} to="home" smooth={true} duration={500}>
-                            Home
-                        </Link>
-                    </li>
-                    <li className='py-6 text-4xl'>
-                        <Link onClick={handleClick} to="about" smooth={true} duration={500}>
-                            About
-                        </Link>
-                    </li>
-                    <li className='py-6 text-4xl'>
-                        <Link onClick={handleClick} to="skills" smooth={true} duration={500}>
-                            Skills
-                        </Link>
-                    </li>
-                    <li onClick={handleClick} className='py-6 text-4xl'>
-                        <Link to="contact" smooth={true} duration={500}>
-                            Contact
-                        </Link>
-                    </li>
-                </ul>
-
-        {/* social Icons */}
-        <div className="hidden lg:flex fixed flex-col top-[35%] left-0 ">
-            <ul>
-                <li className='w-[160px] h-[60px] flex justify-between ml-[-100px] hover:ml-[-10px] duration-300 bg-blue-500'>
-                    <a className='flex justify-between items-center w-full text-gray-300' 
-                        href="https://www.linkedin.com/in/mriganka-das-95936b21b/">
-                        LinkedIn <FaLinkedin size={30}/>
-                    </a>
-                </li>
-                
-                <li className='w-[160px] h-[60px] flex justify-between ml-[-100px] bg-[#262d34] hover:ml-[-10px] duration-300'>
-                    <a  className='flex justify-between items-center w-full text-gray-300'
-                        href='https://github.com/Mr1ganka'>
-                        Github <FaGithub size={30}/>
-                    </a>
-                </li>
-
-                {/* <li className='w-[160px] h-[60px] flex justify-between ml-[-100px] bg-[#6fc2b0] hover:ml-[-10px] duration-300'>
-                    <a className='flex justify-between items-center w-full text-gray-300'
-                        href='"mailto:thisismrigs@gmail.com"'>
-                        Email <HiOutlineMail size={30}/>
-                    </a>
-                </li> */}
-
-                <li className='w-[160px] h-[60px] flex justify-between ml-[-100px] bg-[#565f69] hover:ml-[-10px] duration-300'>
-                    <a className='flex justify-between items-center w-full text-gray-300'
-                        href="https://drive.google.com/file/d/1nRJ7IBQ-whHv17K0_g7KQrbSvzvIbIJp/view?usp=drive_link">
-                        Resume <BsFillPersonLinesFill size={30}/>
-                    </a>
-                </li>
-            </ul>
+          <a
+            href={portfolioData.personal.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            className="p-2 rounded-lg text-slate-400 hover:text-cyan-400 hover:bg-slate-800 transition-colors"
+            title="LinkedIn"
+          >
+            <FaLinkedin size={16} />
+          </a>
         </div>
-    </div>
-  )
+
+        {/* Mobile Hamburger Toggle */}
+        <div className="flex sm:hidden items-center gap-2">
+          <button
+            onClick={onOpenTerminal}
+            className="p-2 rounded-lg bg-slate-900 border border-slate-700 text-cyan-400"
+            title="Terminal"
+          >
+            <FaTerminal size={14} />
+          </button>
+          <button
+            onClick={() => setNav(!nav)}
+            className="p-2 rounded-lg bg-slate-900 text-slate-300 hover:text-white border border-slate-800"
+          >
+            {nav ? <FaTimes size={18} /> : <FaBars size={18} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer Menu */}
+      {nav && (
+        <div className="sm:hidden bg-[#090d16] border-b border-slate-800 px-6 py-6 space-y-3">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className="block w-full text-left py-2 text-sm font-mono text-slate-200 hover:text-cyan-400"
+            >
+              {item.label}
+            </button>
+          ))}
+          <div className="pt-4 border-t border-slate-800 flex items-center gap-3">
+            <a
+              href={portfolioData.personal.resumeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="flex-1 text-center py-2 rounded-lg bg-cyan-500 text-slate-950 font-bold text-xs font-mono"
+            >
+              Resume PDF
+            </a>
+            <a
+              href={portfolioData.personal.github}
+              target="_blank"
+              rel="noreferrer"
+              className="p-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-300"
+            >
+              <FaGithub size={16} />
+            </a>
+            <a
+              href={portfolioData.personal.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="p-2 bg-slate-900 border border-slate-800 rounded-lg text-cyan-400"
+            >
+              <FaLinkedin size={16} />
+            </a>
+          </div>
+        </div>
+      )}
+    </header>
+  );
 }
 
-export default Navbar
+export default Navbar;

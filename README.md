@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Mriganka Das — Senior Backend & Distributed Systems Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Interactive, performance-tuned developer portfolio for **Mriganka Das**, Senior Backend & Distributed Systems Engineer specializing in Java/Spring Boot microservices, Kafka event streaming, Go high-concurrency gateways, and resilient cloud architectures.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Key Features & Interactivity
 
-### `npm start`
+- **Interactive Architecture Lab / System Playground**:
+  - **GoPulse Distributed Rate Limiter Simulator**: Interactive Token Bucket rate limiting and concurrent burst evaluation using Go and Redis atomic Lua scripts.
+  - **Kafka Telemetry Stream Simulator**: Emit real-time GPS, CAN bus, and critical alert packets with sub-100ms end-to-end latency and Dead Letter Queue (DLQ) fault isolation.
+  - **SettleSense Immutable Ledger**: Interactive Domain-Driven Design (DDD) expense-splitting engine computing exact minor-unit double-entry distributions with reversing entry generation.
+- **Interactive Terminal / Command Center**:
+  - Full CLI emulator accessible anytime via navbar button, floating trigger, or pressing `` ` `` / `~`.
+  - Commands supported: `help`, `about`, `skills`, `projects`, `experience`, `stats`, `contact`, `resume`, `clear`, `sudo hire`.
+- **Interactive Skills Matrix**:
+  - Instant live search and category filters (`Backend & Core`, `Distributed & Messaging`, `Cloud & DevOps`, `Frontend & Mobile`).
+  - Contextual real-world production notes on each technology.
+- **Featured Systems & Deep-Dive Modals**:
+  - Interactive "Inspect Architecture" modals detailing system design trade-offs, bounded contexts, and invariants.
+  - One-click transitions into interactive simulations.
+- **Streamlined Experience & Stack Cards**:
+  - Focus-first career timeline highlighting technologies used per role (Solera/Spireon, Selegic, MAKAUT) without dense corporate clutter.
+- **Quick Direct Contact & Resume Dispatch**:
+  - One-click copy for email and phone with animated feedback.
+  - Embedded direct link to `Mriganka_Das_Resume.pdf`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tech Stack
 
-### `npm test`
+- **Frontend**: React 18, Tailwind CSS, React Icons
+- **Typography & Theme**: Inter, JetBrains Mono, Cyber Slate Dark Theme
+- **Target Profiles**: Senior Backend Engineer, Distributed Systems Engineer, Platform Engineer
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 💻 Running Locally
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+# Install dependencies
+npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Start local development server
+npm start
+# Opens at http://localhost:3000
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Build production bundle
+npm run build
+```
