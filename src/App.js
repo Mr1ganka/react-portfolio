@@ -9,7 +9,8 @@ import SystemPlayground from './components/SystemPlayground';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import TerminalModal from './components/TerminalModal';
-import { FaTerminal } from 'react-icons/fa';
+import { portfolioData } from './data/portfolioData';
+import { FaTerminal, FaWhatsapp } from 'react-icons/fa';
 
 function App() {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -64,10 +65,22 @@ function App() {
 
       <Footer onOpenTerminal={() => setIsTerminalOpen(true)} />
 
+      {/* Floating Action Button for WhatsApp (Direct DM) */}
+      <a
+        href={portfolioData.personal.whatsappUrl}
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-5 sm:bottom-6 left-5 sm:left-6 z-30 flex items-center gap-2 px-3 sm:px-3.5 py-2.5 rounded-full bg-emerald-600/95 hover:bg-emerald-500 active:scale-95 text-white border border-emerald-400/40 shadow-xl shadow-emerald-500/25 backdrop-blur-md transition-all font-mono text-xs group"
+        title="Chat on WhatsApp"
+      >
+        <FaWhatsapp size={16} />
+        <span className="hidden sm:inline font-semibold">WhatsApp DM</span>
+      </a>
+
       {/* Floating Action Button for Terminal CLI */}
       <button
         onClick={() => setIsTerminalOpen(true)}
-        className="fixed bottom-6 right-6 z-30 flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-slate-900/90 hover:bg-cyan-500 text-cyan-400 hover:text-slate-950 border border-cyan-500/40 shadow-xl shadow-cyan-500/10 backdrop-blur-md transition-all font-mono text-xs group"
+        className="fixed bottom-5 sm:bottom-6 right-5 sm:right-6 z-30 flex items-center gap-2 px-3 sm:px-3.5 py-2.5 rounded-full bg-slate-900/90 hover:bg-cyan-500 text-cyan-400 hover:text-slate-950 border border-cyan-500/40 shadow-xl shadow-cyan-500/10 backdrop-blur-md transition-all font-mono text-xs group"
         title="Open Terminal (Press ~)"
       >
         <FaTerminal size={13} />

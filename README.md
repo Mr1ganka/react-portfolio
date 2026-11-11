@@ -23,7 +23,7 @@
   - Focus-first career timeline highlighting technologies used per role (Solera/Spireon, Selegic, MAKAUT) without dense corporate clutter.
 - **Quick Direct Contact & Resume Dispatch**:
   - One-click copy for email and phone with animated feedback.
-  - Embedded direct link to `Mriganka_Das_Resume.pdf`.
+  - One-click direct access to latest Resume on Google Drive.
 
 ---
 

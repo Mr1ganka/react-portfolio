@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { portfolioData } from '../data/portfolioData';
 import {
   FaEnvelope,
-  FaPhoneAlt,
   FaMapMarkerAlt,
   FaGithub,
   FaLinkedin,
@@ -10,6 +9,7 @@ import {
   FaCopy,
   FaCheck,
   FaPaperPlane,
+  FaWhatsapp,
 } from 'react-icons/fa';
 
 const Contact = () => {
@@ -32,47 +32,101 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" name="contact" className="w-full py-20 bg-[#080c14] text-slate-200">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="contact" name="contact" className="w-full py-16 sm:py-20 bg-[#080c14] text-slate-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-wider mb-3">
             <FaEnvelope /> Get In Touch
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
             Initiate Direct Contact
           </h2>
-          <p className="text-slate-400 mt-2 text-sm sm:text-base">
-            Open for Senior Backend & Distributed Systems roles, high-throughput microservices, and event streaming projects.
+          <p className="text-slate-400 mt-2 text-xs sm:text-base">
+            Open for Senior Backend & Distributed Systems roles, high-throughput microservices, and streaming platforms.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-10">
+        <div className="grid lg:grid-cols-12 gap-6 sm:gap-10">
           {/* Direct Channels Column */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="glass-card p-6 sm:p-8 rounded-2xl border border-slate-800/80 space-y-6">
-              <h3 className="text-xl font-bold text-white">
-                Contact Information
-              </h3>
-              <p className="text-slate-300 text-sm leading-relaxed">
-                Feel free to email me directly or copy my details below. I typically respond within 24 hours.
-              </p>
+          <div className="lg:col-span-5 space-y-5 sm:space-y-6">
+            <div className="glass-card p-5 sm:p-8 rounded-2xl border border-slate-800/80 space-y-5 sm:space-y-6">
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-white">
+                  Contact Information
+                </h3>
+                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mt-1">
+                  Send a direct WhatsApp message, drop an email, or connect via LinkedIn.
+                </p>
+              </div>
 
-              <div className="space-y-4 text-sm font-mono">
+              <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm font-mono">
+                {/* Phone / WhatsApp Item with Direct DM Action */}
+                <div className="p-3.5 sm:p-4 rounded-xl bg-slate-900/90 border border-emerald-500/30 hover:border-emerald-500/50 transition-all space-y-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3 overflow-hidden">
+                      <div className="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                        <FaWhatsapp size={18} />
+                      </div>
+                      <div>
+                        <div className="text-[10px] sm:text-[11px] text-emerald-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                          <span>WhatsApp & Phone</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                        </div>
+                        <div className="text-white font-semibold text-xs sm:text-sm">
+                          {portfolioData.personal.phone}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Actions for WhatsApp */}
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1 border-t border-slate-800/80">
+                    <a
+                      href={portfolioData.personal.whatsappUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 active:scale-98 text-slate-950 font-bold text-xs font-mono transition-all shadow-md shadow-emerald-500/20"
+                      title="Send WhatsApp Direct Message"
+                    >
+                      <FaWhatsapp size={15} />
+                      <span>Send WhatsApp DM</span>
+                    </a>
+
+                    <button
+                      onClick={() => copyToClipboard(portfolioData.personal.phone, 'phone')}
+                      className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700 transition-colors"
+                      title="Copy Phone Number"
+                    >
+                      {copiedField === 'phone' ? (
+                        <>
+                          <FaCheck size={11} className="text-emerald-400" />
+                          <span>Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <FaCopy size={11} />
+                          <span>Copy Number</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
+
                 {/* Email Item */}
-                <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between gap-3 group">
+                <div className="p-3.5 sm:p-4 rounded-xl bg-slate-900/80 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group">
                   <div className="flex items-center gap-3 overflow-hidden">
                     <div className="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0">
                       <FaEnvelope size={15} />
                     </div>
                     <div className="truncate">
-                      <div className="text-[11px] text-slate-500">EMAIL</div>
-                      <div className="text-slate-200 truncate">{portfolioData.personal.email}</div>
+                      <div className="text-[10px] sm:text-[11px] text-slate-500">EMAIL</div>
+                      <div className="text-slate-200 text-xs sm:text-sm truncate">{portfolioData.personal.email}</div>
                     </div>
                   </div>
                   <button
                     onClick={() => copyToClipboard(portfolioData.personal.email, 'email')}
-                    className="px-2.5 py-1.5 rounded-md bg-slate-800 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-300 border border-slate-700 text-xs transition-colors shrink-0 flex items-center gap-1"
+                    className="self-end sm:self-auto px-3 py-1.5 rounded-md bg-slate-800 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-300 border border-slate-700 text-xs transition-colors shrink-0 flex items-center gap-1.5"
                     title="Copy Email"
                   >
                     {copiedField === 'email' ? (
@@ -87,53 +141,33 @@ const Contact = () => {
                   </button>
                 </div>
 
-                {/* Phone Item */}
-                <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between gap-3 group">
-                  <div className="flex items-center gap-3 overflow-hidden">
-                    <div className="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
-                      <FaPhoneAlt size={14} />
-                    </div>
-                    <div>
-                      <div className="text-[11px] text-slate-500">PHONE / WHATSAPP</div>
-                      <div className="text-slate-200">{portfolioData.personal.phone}</div>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => copyToClipboard(portfolioData.personal.phone, 'phone')}
-                    className="px-2.5 py-1.5 rounded-md bg-slate-800 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 border border-slate-700 text-xs transition-colors shrink-0 flex items-center gap-1"
-                    title="Copy Phone"
-                  >
-                    {copiedField === 'phone' ? (
-                      <>
-                        <FaCheck size={11} className="text-emerald-400" /> Copied!
-                      </>
-                    ) : (
-                      <>
-                        <FaCopy size={11} /> Copy
-                      </>
-                    )}
-                  </button>
-                </div>
-
                 {/* Location Item */}
-                <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-3">
+                <div className="p-3.5 sm:p-4 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0">
                     <FaMapMarkerAlt size={15} />
                   </div>
                   <div>
-                    <div className="text-[11px] text-slate-500">LOCATION</div>
-                    <div className="text-slate-200">{portfolioData.personal.location} (IST / UTC+5:30)</div>
+                    <div className="text-[10px] sm:text-[11px] text-slate-500">LOCATION</div>
+                    <div className="text-slate-200 text-xs sm:text-sm">{portfolioData.personal.location} (IST / UTC+5:30)</div>
                   </div>
                 </div>
               </div>
 
-              {/* Social Buttons */}
-              <div className="pt-2 border-t border-slate-800/80 flex flex-wrap gap-2">
+              {/* Quick Action Badges (Grid on Mobile, Flex on Desktop) */}
+              <div className="pt-2 border-t border-slate-800/80 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
+                <a
+                  href={portfolioData.personal.whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 active:scale-98 text-slate-950 font-bold text-xs font-mono transition-colors shadow-sm"
+                >
+                  <FaWhatsapp size={14} /> WhatsApp
+                </a>
                 <a
                   href={portfolioData.personal.resumeUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs font-mono transition-colors"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs font-mono transition-colors shadow-sm"
                 >
                   <FaFilePdf size={13} /> Resume PDF
                 </a>
@@ -141,7 +175,7 @@ const Contact = () => {
                   href={portfolioData.personal.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700 transition-colors"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700 transition-colors"
                 >
                   <FaLinkedin size={14} /> LinkedIn
                 </a>
@@ -149,7 +183,7 @@ const Contact = () => {
                   href={portfolioData.personal.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700 transition-colors"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700 transition-colors"
                 >
                   <FaGithub size={14} /> GitHub
                 </a>
@@ -159,16 +193,24 @@ const Contact = () => {
 
           {/* Interactive Contact Form Column */}
           <div className="lg:col-span-7">
-            <div className="glass-card p-6 sm:p-8 rounded-2xl border border-slate-800/80">
+            <div className="glass-card p-5 sm:p-8 rounded-2xl border border-slate-800/80">
               {submitted ? (
-                <div className="py-12 text-center space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mx-auto">
-                    <FaCheck size={28} />
+                <div className="py-10 sm:py-12 text-center space-y-4">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mx-auto">
+                    <FaCheck size={26} />
                   </div>
-                  <h4 className="text-xl font-bold text-white">Message Transmitted</h4>
-                  <p className="text-sm text-slate-400 max-w-md mx-auto leading-relaxed">
-                    Thank you, {formData.name}. Your transmission has been queued. You can also reach me directly at{' '}
-                    <span className="text-cyan-400">{portfolioData.personal.email}</span>.
+                  <h4 className="text-lg sm:text-xl font-bold text-white">Message Transmitted</h4>
+                  <p className="text-xs sm:text-sm text-slate-400 max-w-md mx-auto leading-relaxed">
+                    Thank you, {formData.name}. Your transmission has been queued. You can also reach me directly on{' '}
+                    <a
+                      href={portfolioData.personal.whatsappUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-emerald-400 underline font-semibold hover:text-emerald-300"
+                    >
+                      WhatsApp
+                    </a>{' '}
+                    or at <span className="text-cyan-400">{portfolioData.personal.email}</span>.
                   </p>
                   <button
                     onClick={() => {
@@ -185,10 +227,10 @@ const Contact = () => {
                   onSubmit={handleSubmit}
                   action="https://getform.io/f/dac9c238-a7f7-4036-a86f-a29b6b5698db"
                   method="POST"
-                  className="space-y-5"
+                  className="space-y-4 sm:space-y-5"
                 >
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-1">
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
                       Send a Transmission
                     </h3>
                     <p className="text-xs text-slate-400">
@@ -196,7 +238,7 @@ const Contact = () => {
                     </p>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
                       <label className="block text-xs font-mono text-slate-400 mb-1.5">
                         YOUR NAME:
@@ -207,8 +249,8 @@ const Contact = () => {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="e.g. Sarah Connor"
-                        className="w-full px-3.5 py-2.5 bg-slate-900/90 border border-slate-700 rounded-xl text-sm text-white placeholder-slate-500 focus:border-cyan-400 outline-none transition-colors"
+                        placeholder="e.g. Alex Taylor"
+                        className="w-full px-3.5 py-2.5 sm:py-2.5 bg-slate-900/90 border border-slate-700 rounded-xl text-base sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 outline-none transition-colors"
                       />
                     </div>
                     <div>
@@ -221,8 +263,8 @@ const Contact = () => {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="e.g. sarah@enterprise.io"
-                        className="w-full px-3.5 py-2.5 bg-slate-900/90 border border-slate-700 rounded-xl text-sm text-white placeholder-slate-500 focus:border-cyan-400 outline-none transition-colors"
+                        placeholder="e.g. alex@enterprise.io"
+                        className="w-full px-3.5 py-2.5 sm:py-2.5 bg-slate-900/90 border border-slate-700 rounded-xl text-base sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 outline-none transition-colors"
                       />
                     </div>
                   </div>
@@ -234,17 +276,17 @@ const Contact = () => {
                     <textarea
                       name="message"
                       required
-                      rows={5}
+                      rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Share details about the role, project, or technical challenges..."
-                      className="w-full px-3.5 py-2.5 bg-slate-900/90 border border-slate-700 rounded-xl text-sm text-white placeholder-slate-500 focus:border-cyan-400 outline-none transition-colors"
+                      className="w-full px-3.5 py-2.5 bg-slate-900/90 border border-slate-700 rounded-xl text-base sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 outline-none transition-colors"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-cyan-500/20"
+                    className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs sm:text-sm transition-all shadow-lg shadow-cyan-500/20 active:scale-99"
                   >
                     <FaPaperPlane size={14} /> Transmit Message
                   </button>

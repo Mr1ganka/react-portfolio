@@ -44,7 +44,8 @@ const TerminalModal = ({ isOpen, onClose }) => {
   projects    - Architectural summaries of featured projects
   experience  - Professional engineering roles & tech stacks
   stats       - Real-world production metrics & GitHub stats
-  contact     - Reach out via Email, LinkedIn, or Phone
+  contact     - Reach out via Email, LinkedIn, Phone, or WhatsApp
+  whatsapp    - Launch direct WhatsApp chat
   resume      - Open / download Mriganka's latest PDF resume
   clear       - Clear terminal window
   sudo hire   - Unlock candidate evaluation protocols`,
@@ -107,7 +108,15 @@ const TerminalModal = ({ isOpen, onClose }) => {
       case 'contact':
         newHistory.push({
           type: 'output',
-          text: `CONTACT CHANNELS:\n  Email   : ${portfolioData.personal.email}\n  Phone   : ${portfolioData.personal.phone}\n  LinkedIn: ${portfolioData.personal.linkedin}\n  GitHub  : ${portfolioData.personal.github}`,
+          text: `CONTACT CHANNELS:\n  WhatsApp: ${portfolioData.personal.phone} (${portfolioData.personal.whatsappUrl})\n  Email   : ${portfolioData.personal.email}\n  Phone   : ${portfolioData.personal.phone}\n  LinkedIn: ${portfolioData.personal.linkedin}\n  GitHub  : ${portfolioData.personal.github}`,
+        });
+        break;
+
+      case 'whatsapp':
+        window.open(portfolioData.personal.whatsappUrl, '_blank');
+        newHistory.push({
+          type: 'output',
+          text: 'Opening WhatsApp chat in a new tab...',
         });
         break;
 
@@ -131,6 +140,7 @@ const TerminalModal = ({ isOpen, onClose }) => {
 Initializing interview protocol...
 Candidate Status: Available for Senior Backend & Distributed Systems roles.
 Direct Dispatch: ${portfolioData.personal.email} / ${portfolioData.personal.phone}
+WhatsApp DM: ${portfolioData.personal.whatsappUrl}
 Action: Check your inbox or reach out right away!`,
         });
         break;
@@ -151,11 +161,11 @@ Action: Check your inbox or reach out right away!`,
     handleCommand(input);
   };
 
-  const quickPills = ['help', 'skills', 'projects', 'stats', 'experience', 'sudo hire'];
+  const quickPills = ['help', 'whatsapp', 'skills', 'projects', 'stats', 'experience', 'sudo hire'];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4">
-      <div className="w-full max-w-3xl bg-[#090d16] border border-cyan-500/30 rounded-xl shadow-2xl overflow-hidden flex flex-col h-[560px]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2.5 sm:p-4">
+      <div className="w-full max-w-3xl bg-[#090d16] border border-cyan-500/30 rounded-xl shadow-2xl overflow-hidden flex flex-col h-[88vh] sm:h-[560px]">
         {/* Terminal Header */}
         <div className="bg-[#0f172a] px-4 py-3 border-b border-slate-800 flex items-center justify-between">
           <div className="flex items-center space-x-2">
@@ -222,7 +232,7 @@ Action: Check your inbox or reach out right away!`,
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type a command (e.g. skills, projects, stats)..."
-            className="flex-1 bg-transparent text-slate-100 font-mono text-sm outline-none placeholder-slate-600"
+            className="flex-1 bg-transparent text-slate-100 font-mono text-base sm:text-sm outline-none placeholder-slate-600"
           />
           <button
             type="submit"

@@ -201,26 +201,26 @@ const SystemPlayground = () => {
   };
 
   return (
-    <section id="playground" name="playground" className="w-full py-20 bg-[#090d16] text-slate-200">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="playground" name="playground" className="w-full py-16 sm:py-20 bg-[#090d16] text-slate-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Title */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-wider mb-3">
             <FaMicrochip /> Interactive Architecture Lab
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
             Live System Simulations
           </h2>
-          <p className="text-slate-400 mt-3 text-sm sm:text-base">
+          <p className="text-slate-400 mt-2 sm:mt-3 text-xs sm:text-base">
             Test and interact with open algorithmic simulations representing key architectural domains: Go distributed rate limiting, Kafka event streaming, and DDD financial ledgers.
           </p>
         </div>
 
-        {/* Tab Selector */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+        {/* Tab Selector (Mobile friendly stacking / wrapping) */}
+        <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center gap-2 mb-6 sm:mb-8">
           <button
             onClick={() => setActiveTab('ratelimiter')}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${
+            className={`flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
               activeTab === 'ratelimiter'
                 ? 'bg-cyan-500 text-slate-950 font-semibold shadow-lg shadow-cyan-500/20'
                 : 'bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800'
@@ -231,7 +231,7 @@ const SystemPlayground = () => {
           </button>
           <button
             onClick={() => setActiveTab('kafka')}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${
+            className={`flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
               activeTab === 'kafka'
                 ? 'bg-cyan-500 text-slate-950 font-semibold shadow-lg shadow-cyan-500/20'
                 : 'bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800'
@@ -242,7 +242,7 @@ const SystemPlayground = () => {
           </button>
           <button
             onClick={() => setActiveTab('settlesense')}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${
+            className={`flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
               activeTab === 'settlesense'
                 ? 'bg-cyan-500 text-slate-950 font-semibold shadow-lg shadow-cyan-500/20'
                 : 'bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800'
@@ -392,33 +392,37 @@ const SystemPlayground = () => {
                   </div>
 
                   <div className="bg-[#080c14] border border-slate-800 rounded-xl overflow-hidden font-mono text-xs max-h-56 overflow-y-auto">
-                    <div className="grid grid-cols-5 bg-slate-900 px-3 py-2 text-slate-400 border-b border-slate-800 text-[11px]">
-                      <div>REQ ID</div>
-                      <div>CLIENT IP</div>
-                      <div>STATUS</div>
-                      <div>LATENCY</div>
-                      <div>TOKENS REMAINING</div>
-                    </div>
-                    <div className="divide-y divide-slate-800/60">
-                      {rateLimiterLogs.map((log) => (
-                        <div key={log.id} className="grid grid-cols-5 px-3 py-2.5 items-center text-slate-300">
-                          <span className="text-slate-400">{log.id}</span>
-                          <span className="truncate">{log.client}</span>
-                          <span>
-                            <span
-                              className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                                log.status === 200
-                                  ? 'bg-emerald-500/20 text-emerald-400'
-                                  : 'bg-rose-500/20 text-rose-400'
-                              }`}
-                            >
-                              {log.status} {log.status === 200 ? 'OK' : '429'}
-                            </span>
-                          </span>
-                          <span className="text-cyan-400">{log.latency}</span>
-                          <span className="text-slate-400">{log.tokensLeft} tokens</span>
+                    <div className="overflow-x-auto">
+                      <div className="min-w-[440px]">
+                        <div className="grid grid-cols-5 bg-slate-900 px-3 py-2 text-slate-400 border-b border-slate-800 text-[11px]">
+                          <div>REQ ID</div>
+                          <div>CLIENT IP</div>
+                          <div>STATUS</div>
+                          <div>LATENCY</div>
+                          <div>TOKENS REMAINING</div>
                         </div>
-                      ))}
+                        <div className="divide-y divide-slate-800/60">
+                          {rateLimiterLogs.map((log) => (
+                            <div key={log.id} className="grid grid-cols-5 px-3 py-2.5 items-center text-slate-300">
+                              <span className="text-slate-400">{log.id}</span>
+                              <span className="truncate">{log.client}</span>
+                              <span>
+                                <span
+                                  className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                                    log.status === 200
+                                      ? 'bg-emerald-500/20 text-emerald-400'
+                                      : 'bg-rose-500/20 text-rose-400'
+                                  }`}
+                                >
+                                  {log.status} {log.status === 200 ? 'OK' : '429'}
+                                </span>
+                              </span>
+                              <span className="text-cyan-400">{log.latency}</span>
+                              <span className="text-slate-400">{log.tokensLeft} tokens</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -659,31 +663,35 @@ const SystemPlayground = () => {
                 ) : (
                   <div className="space-y-3">
                     <div className="bg-[#080c14] border border-slate-800 rounded-xl overflow-hidden font-mono text-xs">
-                      <div className="grid grid-cols-5 bg-slate-900 px-4 py-2 text-slate-400 border-b border-slate-800 text-[11px]">
-                        <div>TX REF</div>
-                        <div>PARTICIPANT</div>
-                        <div>OBLIGATION</div>
-                        <div>NET POSTING</div>
-                        <div>STATUS</div>
-                      </div>
-                      <div className="divide-y divide-slate-800/60">
-                        {ledgerEntries.map((e) => (
-                          <div key={e.id} className="grid grid-cols-5 px-4 py-3 items-center text-slate-200">
-                            <span className="text-cyan-400">{e.id}</span>
-                            <span className="font-semibold">{e.user}</span>
-                            <span>${e.share}</span>
-                            <span
-                              className={`font-semibold ${
-                                Number(e.net) > 0 ? 'text-emerald-400' : 'text-rose-400'
-                              }`}
-                            >
-                              {Number(e.net) > 0 ? `+$${e.net}` : `-$${Math.abs(e.net).toFixed(2)}`}
-                            </span>
-                            <span className="px-2 py-0.5 w-fit rounded bg-emerald-500/20 text-emerald-400 text-[10px]">
-                              {isReversed ? 'REVERSED' : e.status}
-                            </span>
+                      <div className="overflow-x-auto">
+                        <div className="min-w-[460px]">
+                          <div className="grid grid-cols-5 bg-slate-900 px-4 py-2 text-slate-400 border-b border-slate-800 text-[11px]">
+                            <div>TX REF</div>
+                            <div>PARTICIPANT</div>
+                            <div>OBLIGATION</div>
+                            <div>NET POSTING</div>
+                            <div>STATUS</div>
                           </div>
-                        ))}
+                          <div className="divide-y divide-slate-800/60">
+                            {ledgerEntries.map((e) => (
+                              <div key={e.id} className="grid grid-cols-5 px-4 py-3 items-center text-slate-200">
+                                <span className="text-cyan-400">{e.id}</span>
+                                <span className="font-semibold">{e.user}</span>
+                                <span>${e.share}</span>
+                                <span
+                                  className={`font-semibold ${
+                                    Number(e.net) > 0 ? 'text-emerald-400' : 'text-rose-400'
+                                  }`}
+                                >
+                                  {Number(e.net) > 0 ? `+$${e.net}` : `-$${Math.abs(e.net).toFixed(2)}`}
+                                </span>
+                                <span className="px-2 py-0.5 w-fit rounded bg-emerald-500/20 text-emerald-400 text-[10px]">
+                                  {isReversed ? 'REVERSED' : e.status}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </div>
 
