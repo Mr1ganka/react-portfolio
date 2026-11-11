@@ -8,8 +8,8 @@ const Footer = ({ onOpenTerminal }) => {
   };
 
   return (
-    <footer className="w-full bg-[#05080e] border-t border-slate-900 py-8 sm:py-12 text-slate-400 text-xs font-mono">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6">
+    <footer className="w-full max-w-full overflow-hidden bg-[#05080e] border-t border-slate-900 py-8 sm:py-12 text-slate-400 text-xs font-mono">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6">
         {/* Left Info */}
         <div className="space-y-1 text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start gap-2 text-white font-bold text-xs sm:text-sm">

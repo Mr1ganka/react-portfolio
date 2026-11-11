@@ -11,8 +11,8 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" name="experience" className="w-full py-16 sm:py-20 bg-[#090d16] text-slate-200">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+    <section id="experience" name="experience" className="w-full max-w-full overflow-hidden py-16 sm:py-20 bg-[#090d16] text-slate-200">
+      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-wider mb-3">

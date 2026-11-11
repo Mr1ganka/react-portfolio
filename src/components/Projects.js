@@ -35,8 +35,8 @@ const Projects = ({ selectedSkillFilter, onClearFilter }) => {
   };
 
   return (
-    <section id="projects" name="projects" className="w-full py-16 sm:py-20 bg-[#080c14] text-slate-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section id="projects" name="projects" className="w-full max-w-full overflow-hidden py-16 sm:py-20 bg-[#080c14] text-slate-200">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 sm:gap-6 mb-8 sm:mb-12">
           <div>

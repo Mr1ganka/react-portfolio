@@ -225,18 +225,18 @@ Action: Check your inbox or reach out right away!`,
 
         {/* Input Bar */}
         <form onSubmit={handleSubmit} className="px-4 py-3 bg-[#0f172a] border-t border-slate-800 flex items-center gap-2">
-          <span className="text-emerald-400 font-mono text-sm font-semibold">guest@platform:~$</span>
+          <span className="text-emerald-400 font-mono text-xs sm:text-sm font-semibold shrink-0">guest@platform:~$</span>
           <input
             ref={inputRef}
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type a command (e.g. skills, projects, stats)..."
-            className="flex-1 bg-transparent text-slate-100 font-mono text-base sm:text-sm outline-none placeholder-slate-600"
+            className="flex-1 min-w-0 bg-transparent text-slate-100 font-mono text-base sm:text-sm outline-none placeholder-slate-600"
           />
           <button
             type="submit"
-            className="text-cyan-400 hover:text-cyan-300 p-1.5 rounded transition-colors"
+            className="text-cyan-400 hover:text-cyan-300 p-1.5 rounded transition-colors shrink-0"
             title="Execute"
           >
             <FaPlay size={12} />

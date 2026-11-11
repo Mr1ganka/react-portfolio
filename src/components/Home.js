@@ -32,19 +32,19 @@ const Home = ({ onOpenTerminal }) => {
     <section
       id="home"
       name="home"
-      className="relative w-full min-h-screen pt-24 sm:pt-28 pb-14 sm:pb-16 flex flex-col justify-center bg-[#080c14] text-slate-200 overflow-hidden"
+      className="relative w-full max-w-full min-h-screen pt-24 sm:pt-28 pb-14 sm:pb-16 flex flex-col justify-center bg-[#080c14] text-slate-200 overflow-hidden"
     >
       {/* Subtle Background Glow Elements */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[600px] h-[250px] sm:h-[350px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/3 left-1/4 w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[600px] h-[200px] sm:h-[350px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-[160px] sm:w-[300px] h-[160px] sm:h-[300px] bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Terminal Header Prompt */}
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-[11px] sm:text-xs font-mono text-cyan-400 mb-5 sm:mb-6 shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span>mriganka@distributed-platform:~</span>
-          <span className="text-slate-500 hidden xs:inline">|</span>
-          <span className="text-slate-400 hidden xs:inline">IoT Fleet & Distributed Systems</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-[11px] sm:text-xs font-mono text-cyan-400 mb-5 sm:mb-6 shadow-sm max-w-full overflow-hidden">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+          <span className="truncate">mriganka@distributed-platform:~</span>
+          <span className="text-slate-500 hidden sm:inline">|</span>
+          <span className="text-slate-400 hidden sm:inline">IoT Fleet & Distributed Systems</span>
         </div>
 
         {/* Hero Title & Subheading */}

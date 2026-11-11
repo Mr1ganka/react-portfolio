@@ -46,27 +46,30 @@ function Navbar({ onOpenTerminal }) {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 w-full max-w-[100vw] z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#080c14]/95 backdrop-blur-md border-b border-slate-800/80 py-2.5 sm:py-3 shadow-lg'
-          : 'bg-transparent py-3 sm:py-5'
+          ? 'bg-[#080c14]/95 backdrop-blur-md border-b border-slate-800/80 py-2 sm:py-3 shadow-lg'
+          : 'bg-transparent py-2.5 sm:py-5'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <div className="w-full max-w-6xl mx-auto px-3 sm:px-6 flex items-center justify-between gap-2">
         {/* Brand / Logo */}
         <button
           onClick={() => scrollToSection('home')}
-          className="flex items-center gap-2.5 sm:gap-3 group text-left"
+          className="flex items-center gap-2 sm:gap-3 group text-left min-w-0 shrink"
         >
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-slate-950 font-black font-mono text-sm sm:text-base shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-slate-950 font-black font-mono text-xs sm:text-base shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform shrink-0">
             MD
           </div>
-          <div>
-            <div className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-400 transition-colors">
+          <div className="min-w-0">
+            <div className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-400 transition-colors truncate">
               Mriganka Das
             </div>
-            <div className="text-[10px] sm:text-[11px] font-mono text-slate-400">
+            <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 truncate hidden xs:block">
               Senior Backend Engineer
+            </div>
+            <div className="text-[9px] font-mono text-cyan-400 truncate xs:hidden">
+              Backend & Systems
             </div>
           </div>
         </button>
@@ -141,27 +144,27 @@ function Navbar({ onOpenTerminal }) {
           </a>
         </div>
 
-        {/* Mobile Action Controls (Phones) */}
-        <div className="flex sm:hidden items-center gap-1.5">
+        {/* Mobile Action Controls (Phones) - Always pinned and fully visible on screen */}
+        <div className="flex sm:hidden items-center gap-1.5 shrink-0">
           <a
             href={portfolioData.personal.whatsappUrl}
             target="_blank"
             rel="noreferrer"
-            className="p-2 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/40"
+            className="p-2 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-500/30 transition-colors"
             title="Chat on WhatsApp"
           >
             <FaWhatsapp size={16} />
           </a>
           <button
             onClick={onOpenTerminal}
-            className="p-2 rounded-lg bg-slate-900 border border-slate-700 text-cyan-400"
+            className="p-2 rounded-lg bg-slate-900 border border-slate-700 text-cyan-400 hover:border-cyan-500 transition-colors"
             title="Terminal"
           >
             <FaTerminal size={13} />
           </button>
           <button
             onClick={() => setNav(!nav)}
-            className="p-2 rounded-lg bg-slate-900 text-slate-300 hover:text-white border border-slate-800"
+            className="p-2 rounded-lg bg-slate-900 text-slate-300 hover:text-white border border-slate-800 transition-colors"
             aria-label="Toggle navigation menu"
           >
             {nav ? <FaTimes size={18} /> : <FaBars size={18} />}
@@ -171,7 +174,7 @@ function Navbar({ onOpenTerminal }) {
 
       {/* Mobile Drawer Menu (Full responsiveness for phones) */}
       {nav && (
-        <div className="sm:hidden bg-[#090d16]/98 backdrop-blur-xl border-b border-slate-800 px-5 py-5 space-y-2 shadow-2xl animate-in slide-in-from-top duration-200">
+        <div className="sm:hidden bg-[#090d16]/98 backdrop-blur-xl border-b border-slate-800 px-4 py-4 space-y-1.5 shadow-2xl max-h-[calc(100vh-64px)] overflow-y-auto">
           {navItems.map((item) => (
             <button
               key={item.id}

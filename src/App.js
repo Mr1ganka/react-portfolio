@@ -47,10 +47,10 @@ function App() {
   };
 
   return (
-    <div className="bg-[#080c14] text-slate-200 min-h-screen selection:bg-cyan-500 selection:text-slate-950 font-sans">
+    <div className="bg-[#080c14] text-slate-200 min-h-screen selection:bg-cyan-500 selection:text-slate-950 font-sans w-full max-w-full overflow-x-hidden">
       <Navbar onOpenTerminal={() => setIsTerminalOpen(true)} />
 
-      <main>
+      <main className="w-full max-w-full overflow-x-hidden">
         <Home onOpenTerminal={() => setIsTerminalOpen(true)} />
         <About />
         <Skills onSelectSkillForProjects={handleSelectSkill} />
@@ -70,7 +70,7 @@ function App() {
         href={portfolioData.personal.whatsappUrl}
         target="_blank"
         rel="noreferrer"
-        className="fixed bottom-5 sm:bottom-6 left-5 sm:left-6 z-30 flex items-center gap-2 px-3 sm:px-3.5 py-2.5 rounded-full bg-emerald-600/95 hover:bg-emerald-500 active:scale-95 text-white border border-emerald-400/40 shadow-xl shadow-emerald-500/25 backdrop-blur-md transition-all font-mono text-xs group"
+        className="fixed bottom-4 sm:bottom-6 left-3 sm:left-6 z-30 flex items-center gap-2 p-2.5 sm:px-3.5 sm:py-2.5 rounded-full bg-emerald-600/95 hover:bg-emerald-500 active:scale-95 text-white border border-emerald-400/40 shadow-xl shadow-emerald-500/25 backdrop-blur-md transition-all font-mono text-xs group"
         title="Chat on WhatsApp"
       >
         <FaWhatsapp size={16} />
@@ -80,7 +80,7 @@ function App() {
       {/* Floating Action Button for Terminal CLI */}
       <button
         onClick={() => setIsTerminalOpen(true)}
-        className="fixed bottom-5 sm:bottom-6 right-5 sm:right-6 z-30 flex items-center gap-2 px-3 sm:px-3.5 py-2.5 rounded-full bg-slate-900/90 hover:bg-cyan-500 text-cyan-400 hover:text-slate-950 border border-cyan-500/40 shadow-xl shadow-cyan-500/10 backdrop-blur-md transition-all font-mono text-xs group"
+        className="fixed bottom-4 sm:bottom-6 right-3 sm:right-6 z-30 flex items-center gap-2 p-2.5 sm:px-3.5 sm:py-2.5 rounded-full bg-slate-900/90 hover:bg-cyan-500 text-cyan-400 hover:text-slate-950 border border-cyan-500/40 shadow-xl shadow-cyan-500/10 backdrop-blur-md transition-all font-mono text-xs group"
         title="Open Terminal (Press ~)"
       >
         <FaTerminal size={13} />

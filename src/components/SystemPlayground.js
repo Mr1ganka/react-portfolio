@@ -201,8 +201,8 @@ const SystemPlayground = () => {
   };
 
   return (
-    <section id="playground" name="playground" className="w-full py-16 sm:py-20 bg-[#090d16] text-slate-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section id="playground" name="playground" className="w-full max-w-full overflow-hidden py-16 sm:py-20 bg-[#090d16] text-slate-200">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Title */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-wider mb-3">
@@ -255,10 +255,10 @@ const SystemPlayground = () => {
 
         {/* --- SIMULATION 1: GOPULSE DISTRIBUTED RATE LIMITER --- */}
         {activeTab === 'ratelimiter' && (
-          <div className="bg-[#0c1220] border border-cyan-500/30 rounded-2xl p-6 sm:p-8 shadow-xl">
+          <div className="bg-[#0c1220] border border-cyan-500/30 rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl max-w-full overflow-hidden">
             <div className="grid lg:grid-cols-3 gap-6">
               {/* Controls Column */}
-              <div className="space-y-5 lg:border-r lg:border-slate-800 lg:pr-6">
+              <div className="space-y-5 lg:border-r lg:border-slate-800 lg:pr-6 min-w-0">
                 <div className="flex items-center justify-between">
                   <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                     <FaBolt className="text-yellow-400" /> Token Bucket Controls
@@ -349,7 +349,7 @@ const SystemPlayground = () => {
               </div>
 
               {/* Bucket State & Output Column */}
-              <div className="lg:col-span-2 space-y-5">
+              <div className="lg:col-span-2 space-y-5 min-w-0 max-w-full">
                 {/* Visual Token Meter */}
                 <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
                   <div className="flex items-center justify-between text-xs font-mono">
@@ -382,17 +382,17 @@ const SystemPlayground = () => {
                 </div>
 
                 {/* Request Stream Logs */}
-                <div>
+                <div className="w-full min-w-0">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-mono text-slate-400 flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
                       Go Gin Gateway • Sub-5ms Redis Decision Stream
                     </span>
-                    <span className="text-[11px] font-mono text-slate-500">Atomic Lua Script Evaluation</span>
+                    <span className="text-[11px] font-mono text-slate-500 hidden sm:inline">Atomic Lua Script Evaluation</span>
                   </div>
 
-                  <div className="bg-[#080c14] border border-slate-800 rounded-xl overflow-hidden font-mono text-xs max-h-56 overflow-y-auto">
-                    <div className="overflow-x-auto">
+                  <div className="bg-[#080c14] border border-slate-800 rounded-xl overflow-hidden font-mono text-xs max-h-56 overflow-y-auto w-full">
+                    <div className="overflow-x-auto w-full">
                       <div className="min-w-[440px]">
                         <div className="grid grid-cols-5 bg-slate-900 px-3 py-2 text-slate-400 border-b border-slate-800 text-[11px]">
                           <div>REQ ID</div>
@@ -433,10 +433,10 @@ const SystemPlayground = () => {
 
         {/* --- SIMULATION 2: KAFKA TELEMETRY PIPELINE --- */}
         {activeTab === 'kafka' && (
-          <div className="bg-[#0c1220] border border-cyan-500/30 rounded-2xl p-6 sm:p-8 shadow-xl">
+          <div className="bg-[#0c1220] border border-cyan-500/30 rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl max-w-full overflow-hidden">
             <div className="grid lg:grid-cols-3 gap-6">
               {/* Controls Column */}
-              <div className="space-y-5 lg:border-r lg:border-slate-800 lg:pr-6">
+              <div className="space-y-5 lg:border-r lg:border-slate-800 lg:pr-6 min-w-0">
                 <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                   <SiApachekafka className="text-cyan-400" /> IoT Packet Emitter
                 </h3>
@@ -483,12 +483,12 @@ const SystemPlayground = () => {
               </div>
 
               {/* Ingestion Pipeline Visualization */}
-              <div className="lg:col-span-2 space-y-6">
+              <div className="lg:col-span-2 space-y-6 min-w-0 max-w-full">
                 <div>
                   <h4 className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-3">
                     Active Architecture Flow
                   </h4>
-                  <div className="grid grid-cols-4 gap-2 text-center text-xs font-mono">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs font-mono">
                     <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl">
                       <div className="text-slate-400 text-[10px]">SOURCE</div>
                       <div className="text-cyan-400 font-semibold mt-1">IoT Node</div>
@@ -561,10 +561,10 @@ const SystemPlayground = () => {
 
         {/* --- SIMULATION 3: SETTLESENSE LEDGER ENGINE --- */}
         {activeTab === 'settlesense' && (
-          <div className="bg-[#0c1220] border border-cyan-500/30 rounded-2xl p-6 sm:p-8 shadow-xl">
+          <div className="bg-[#0c1220] border border-cyan-500/30 rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl max-w-full overflow-hidden">
             <div className="grid lg:grid-cols-3 gap-6">
               {/* Controls Column */}
-              <div className="space-y-5 lg:border-r lg:border-slate-800 lg:pr-6">
+              <div className="space-y-5 lg:border-r lg:border-slate-800 lg:pr-6 min-w-0">
                 <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                   <FaLayerGroup className="text-purple-400" /> DDD Split Engine
                 </h3>
@@ -647,7 +647,7 @@ const SystemPlayground = () => {
               </div>
 
               {/* Ledger Output Column */}
-              <div className="lg:col-span-2 space-y-4">
+              <div className="lg:col-span-2 space-y-4 min-w-0 max-w-full">
                 <div className="flex items-center justify-between">
                   <h4 className="text-xs font-mono text-slate-400 uppercase tracking-wider">
                     Double-Entry Transaction Journal
@@ -661,9 +661,9 @@ const SystemPlayground = () => {
                     Click "Generate Immutable Ledger" to compute split distribution and inspect append-only journal entries.
                   </div>
                 ) : (
-                  <div className="space-y-3">
-                    <div className="bg-[#080c14] border border-slate-800 rounded-xl overflow-hidden font-mono text-xs">
-                      <div className="overflow-x-auto">
+                  <div className="space-y-3 w-full min-w-0">
+                    <div className="bg-[#080c14] border border-slate-800 rounded-xl overflow-hidden font-mono text-xs w-full">
+                      <div className="overflow-x-auto w-full">
                         <div className="min-w-[460px]">
                           <div className="grid grid-cols-5 bg-slate-900 px-4 py-2 text-slate-400 border-b border-slate-800 text-[11px]">
                             <div>TX REF</div>
